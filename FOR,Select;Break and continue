@@ -1,0 +1,155 @@
+#! /bin/bash
+
+#for loops - many ways
+: '
+for VARIABLE in 1 2 3 4 ... N
+do 
+ command1
+ command2
+ commandN
+done
+
+OR
+
+for VARIABLE in file1 file2 file3 4 ... fileN
+do 
+ command1 on $VARIABLE
+ command2
+ commandN
+done
+
+OR
+
+for OUTPUT in $(linux-or-unix-command-here)
+do 
+ command1 on $OUTPUT
+ command2 on $OUTPUT
+ commandN
+done
+
+OR
+
+for (( EXP1(init) ; EXP2(condition); EXP3(increment)
+do 
+ command1
+ command2 
+ commandN
+done
+'
+
+
+
+: '
+for i in 1 2 3 4 5
+do
+ echo $i
+done
+
+echo ${BASH_VERSION} #only works for 4 or more version
+for i in {1..10..2} # increment by 2 {START...END...INCREMENT}
+do
+ echo $i
+done
+'
+
+for (( i=0; i < 5 ; i++ ))
+do
+ echo $i
+done
+
+
+#! /bin/bash
+
+#for loop with execute
+: '
+for command in ls pwd date
+do 
+ echo "-----------------$command-------------"
+ $command
+done
+
+
+for item in *
+do 
+ if [ -f $item ]
+ then 
+   echo $item
+ fi
+done
+
+
+#select loop -> iterators and gives menu
+select name in list
+do
+ command1
+ command1
+ command1
+ ....
+done
+'
+
+select name in mark john tom ben
+do
+ echo "$name selected"
+done
+
+
+
+: '
+output :
+rkiran@rkiran-lws:~/Desktop$ ./hello.sh
+1) mark
+2) john
+3) tom
+4) ben
+#? 7
+ selected
+#? 1
+mark selected
+'
+
+
+select name in mark john tom ben
+do
+ case $name in
+ mark)
+   echo mark selected
+   ;;
+ john)
+   echo john selected
+   ;;
+ tom)
+   echo tom selected
+   ;;
+ ben)
+   echo ben selected
+   ;;
+ *)
+  echo " Error please provide the no.between 1 to 4"
+  esac
+done
+
+
+#! /bin/bash
+
+#Break
+for (( i=1 ; i <=10 ; i++ ))
+do
+ if [ $i -gt 5 ]
+ then
+ break # if condition is satisfied it will break out.
+ fi
+ echo "$i"
+done
+
+echo "------------continue-------"
+
+for (( i=1 ; i <=10 ; i++ ))
+do
+ if [ $i -eq 3 -o $i -eq 6 ] # or / equal to
+ then
+  continue # 3 and 6 are skipped
+ fi
+ echo "$i"
+done
+
