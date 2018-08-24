@@ -1,0 +1,75 @@
+#! /bin/bash
+
+: '   
+case expression in
+  pattern1 )
+     statement ;;
+  pattern2 )
+     statement ;;
+  ...
+esac
+'
+
+vehicle=$1
+case $vehicle in
+   "car" )
+      echo "Rent of $vehicle is 100 dollers" ;;
+    "van" )
+      echo "Rent of $vehicle is 80 dollers" ;;
+    "cycle" )
+      echo "Rent of $vehicle is 50 dollers" ;;
+    "truck" )
+       echo "Rent of $vehicle is 800 dollers" ;;
+     * )
+       echo "$vehicle is unkown" ;; #default
+esac
+
+# ./hello.sh truck/cycle/car etc
+
+
+#pattern to evaluate cases
+
+echo -e "Enter some character : \c"
+read value
+
+case $value in
+   [a-z] )
+      echo "Rent of $value is a to z" ;;
+    [A-Z] )
+      echo "Rent of $value is A to Z" ;;
+    [0-9] )
+      echo "Rent of $value is 0 to 9" ;;
+    ? )
+       echo "Rent of $value is special charactor" ;;
+     * )
+       echo "$value is unkown" ;; #default
+esac
+
+: '
+rkiran@rkiran-lws:~/Desktop$ ./hello.sh
+Enter some character : B
+Rent of B is a to z
+rkiran@rkiran-lws:~/Desktop$ ./hello.sh
+Enter some character : b
+Rent of b is a to z
+
+rkiran@rkiran-lws:~/Desktop$ LANG=C
+
+rkiran@rkiran-lws:~/Desktop$ ./hello.sh
+Enter some character : b
+Rent of b is a to z
+rkiran@rkiran-lws:~/Desktop$ ./hello.sh
+Enter some character : B
+Rent of B is A to Z
+rkiran@rkiran-lws:~/Desktop$
+'
+
+
+
+
+
+
+
+
+
+
