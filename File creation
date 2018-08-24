@@ -1,0 +1,54 @@
+#! /bin/bash
+
+#file test operator
+#-e enable the interpretation of \c or else it will take it as backslash
+echo -e "Enter the name of file : \c"
+read file_name
+
+#if [ -e $file_name ]
+if [ -d $file_name ]
+then
+ echo "$file_name found"
+else
+ echo "$file_name not found"
+fi
+
+
+
+
+#for director use -d
+
+if [ -s $file_name ]
+then
+ echo "$file_name not empty"
+else
+ echo "$file_name empty"
+fi
+
+
+
+
+echo -e "Enter the name of file : \c"
+read file_name
+
+if [ -f $file_name ] #f is flag ,always provide empty space before and after
+then
+  if [ -w $file_name ] #write permission
+  then
+    echo "Type some text data. To quit press ctrl+d"
+    cat >> $file_name
+  else
+   echo "The file doesnt have write permission"
+  fi
+else
+ echo "$file_name not exists"
+fi
+
+#chmod +w test
+#chmod -w test -> remove write access
+#you will append everytime you add new message
+
+
+
+
+
