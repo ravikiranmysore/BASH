@@ -1,0 +1,60 @@
+#! /bin/bash
+
+#passed arguments:
+
+echo $0 $1 $2 $3 '> echo $0 $1 $2 $3'
+
+#in the console -> ./hello.sh 12 32 ravi <- passed argument
+#by adding $0 -> it will also gives script name.
+
+#argument as arrays
+args=("$@")
+#echo ${args[0]} ${args[1]} ${args[2]}${args[3]} 
+#0th index is for 1st arguments, 3rd is empty in this case
+
+echo $@ #-> this also does same,all the arguments are printed
+
+echo $# #-> gives number of argument passed to script
+
+
+
+#If statements
+count=10
+if [ $count -eq 10 ]
+ #eq is equality operator
+then
+ echo "condition is true"
+fi
+
+
+count=11
+#If statements
+if [ $count -gt 10 ]
+ #eq is equality operator, or if [ $count > 10 ] can also be used
+then
+ echo "condition is true"
+fi
+#if its fall, it will not give you any error.
+
+
+#integer or string comparison  
+word=a
+
+if [[ $word < "a" ]]
+then
+ echo "condition is true"
+else
+ echo "condition is false"
+fi
+
+
+word=a
+if [[ $word < "a" ]]
+then
+ echo "condition is true"
+elif [[ $word == "a" ]]
+then
+ echo "condition may be true" 
+else
+ echo "condition may be false"
+fi
