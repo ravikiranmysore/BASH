@@ -1,0 +1,70 @@
+cat /etc/shells
+
+ouput :
+/bin/sh
+/bin/dash
+/bin/bash
+/bin/rbash
+/usr/bin/dzsh
+/usr/bin/screen
+
+touch hello.sh -> to create a file
+
+./hello.sh -> to execute or open file
+
+chmod +x hello.sh -> if access is denied 
+
+if you want to open -> gedit hello.sh
+
+Variable :
+container which stores data inside.
+
+
+
+
+
+#! /bin/bash
+echo "Hello world"
+#you can write anything as this is command
+
+
+#name of the bash -> system varibales,CAPTICAL LETTERS
+echo our shell name is $BASH
+echo $HOME
+echo $BASH_VERSION
+echo our home directory is : $PWD
+
+#variable -> user defined
+name=Mark
+echo $name
+10val=90
+echo value is : $10val #this doesnt work
+val=90
+echo value is : $val
+
+#read input from terminal
+echo "Enter name : "
+read name1 name2 name3
+echo "Entered name : $name"
+echo "Entered $name1,$name2,$name3"
+
+#p flag -> allows to enter on same lines
+read -p 'username : ' user_var
+echo "username : $user_var"
+
+#sp password as *
+read -p 'username : ' user_var1
+read -sp 'userpass : ' user_pass
+echo
+echo "username : $user_var1"
+echo "userpass : $user_pass"
+
+#display names
+echo "Enter names : "
+read -a names
+echo "Names : ${names[0]},${names[1]}"
+
+#default names, echo what ever you entered
+echo "Enter name : "
+read 
+echo "Name : $REPLY"
