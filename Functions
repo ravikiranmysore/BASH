@@ -1,0 +1,111 @@
+#! /bin/bash
+
+#Functions
+: '
+1.
+function name() {
+ commands
+}
+
+2.
+name() {
+ commands
+}
+
+
+function Hello() {
+ echo "Hello this is function()"
+}
+
+quit () {
+  exit
+}
+
+Hello
+#quit
+
+echo "foo" # this will not be printed.so print quit at the end,
+#sequence of calling function is important
+
+quit
+
+'
+
+function print() {
+ echo $1     # $2 $3 argument 2 and 3,1 is first argument 
+ echo $2 $3
+ echo $1 $2 $3
+}
+
+quit () {
+  exit
+}
+
+print MY_ARG #argument 1
+print Hello World #takes only 1st argument
+print again
+print this is arguments
+echo "foo"
+quit
+
+#------------------------------------------------------------------------
+
+#! /bin/bash
+
+#Functions Local variable
+
+function print(){
+  name=$1 #added local keyword
+ echo "the name is $name"
+}
+
+name="Tom" # shell starts from here
+echo "the name is $name : Before"
+
+print HelloWorld
+
+echo "the name is $name : After"
+echo " --------------------------------------"
+
+: '
+rkiran@rkiran-lws:~/Desktop$ ./hello.sh
+the name is Tom : Before
+the name is HelloWorld
+the name is HelloWorld : After
+rkiran@rkiran-lws:~/Desktop$ 
+'
+#use local
+
+function print(){
+  local name=$1 #added local keyword
+ echo "the name is $name"
+}
+
+name="Tom" # shell starts from here
+echo "the name is $name : Before"
+
+print HelloWorld
+
+echo "the name is $name : After"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
