@@ -1,0 +1,73 @@
+#! /bin/bash
+
+#Arrays
+os=('ubuntu' 'windows' 'Kali')
+os[3]='mac'
+echo "${os[@]}" # all
+echo "${os[1]}" # windows 1st index
+echo "${os[*]}" # all
+echo "${!os[@]}" #  only index or indices
+echo "${#os[@]}" # length of array
+os[4]='mint'
+
+echo "${!os[@]}" #  only index or indices
+echo "${#os[@]}" # length of array
+
+#replace
+os[6]='cent'  # can be left uninitialized, its ok
+echo "${os[@]}" # all
+
+#remove
+unset os[0]
+echo "${os[@]}" # all
+
+echo "   "
+
+string=somestringarraytoprint
+echo "${string[@]}"
+echo "${string[0]}"
+echo "${string[1]}" # empty because it is assgined to only 0th index
+echo "${#string[@]}"
+
+
+
+#Loops
+#while loop
+: '
+while [ condition ]
+do
+  command1
+  command2
+  command3
+done
+'
+
+n=1
+#while [ $n -le 100 ] # less or equal to...
+#or
+while (( $n <= 10 )) 
+do
+ echo "$n"
+ #n=$(( n +1 )) or
+ (( ++n ))
+done
+
+n=1
+#while [ $n -le 100 ] # less or equal to...
+#or
+while (( $n <= 3 )) 
+do
+ echo "$n"
+ #n=$(( n +1 )) or
+ (( ++n ))
+ #sleep 1
+ #gnome-terminal & # you can open 3 terminals
+ xterm &
+done
+
+
+
+
+
+
+
