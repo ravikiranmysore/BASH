@@ -1,0 +1,76 @@
+#! /bin/bash
+
+#Read a file
+
+: '
+while read p 
+do
+ echo $p
+done < hello.sh #file content is redirect to same file
+
+
+echo " or you can do also "
+
+
+cat hello.sh | while read p
+do
+ echo $p
+done
+
+'
+
+#internal field separator : IFS -> word boundaries
+
+while IFS= read -r line 
+# space between read important,-r prevents backslash escape
+#while IFS=' ' read -r line  -> also works
+
+do
+ echo $line
+#done < hello.sh
+done < /etc/host.conf 
+
+
+: '
+rkiran@rkiran-lws:~/Desktop$ cat /etc/host.conf 
+# The "order" line is only used by old versions of the C library.
+order hosts,bind
+multi on
+rkiran@rkiran-lws:~/Desktop$ ./hello.sh
+# The "order" line is only used by old versions of the C library.
+order hosts,bind
+multi on
+rkiran@rkiran-lws:~/Desktop$ 
+'
+
+
+
+#until loops
+
+: '
+until [ condition ]
+do
+ command1
+ command2
+ ...
+ ...
+ commandN
+done
+'
+
+n=1
+
+until [ $n -ge 10 ]
+#if you want 0-10 then use "-gt" greater than or (( ">" ))
+do 
+ echo $n
+ n=$(( n+1 ))
+  #(( n++ )) # rewrite
+done
+
+
+
+
+
+
+
