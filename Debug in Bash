@@ -1,0 +1,29 @@
+#! /bin/bash 
+set -x # activate debug
+#set +x -> deactivate
+
+#Debug
+
+file=/home/rkiran/Desktop/file.txt
+set +x
+trap "rm -f $file && echo file deleted; exit" 0 2 15
+#trap "echo Exit signal is detected" SIGINT
+
+echo "pid is $$"
+while (( COUNT < 10 ))
+do
+ sleep 10
+ (( COUNT ++ ))
+ echo $COUNT
+done
+exit 0
+ #kill in different terminal like : "kill -15 pidnumber"
+
+#1.
+# bash -x ./hello.sh  -> debug mode
+
+#2.
+# #! /bin/bash -x
+
+#3 set -x -> starts , 
+ # set +x -> ends
