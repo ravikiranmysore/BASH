@@ -1,0 +1,131 @@
+#! /bin/bash
+
+#function example
+usage() {
+ echo "You need to give arguments : "
+ echo "usage : $0 file_name"
+}
+
+is_file_exist() {
+  local file="$1" #Note: $1 is first argument
+  [[ -f "$file" ]]  && return 0 || return 1
+  #-f check given file is directory?,is file really a file? also its ternary operator
+}
+
+[[ $# -eq 0 ]] && usage #built in argument,gives no of arguments
+
+if ( is_file_exist "$1" ) #this argument $1 is different,which is file1.txt
+then 
+  echo "file found"
+else
+ echo "file not found"
+fi
+
+
+
+
+" '
+rkiran@rkiran-lws:~/Desktop$ ./hello.sh 
+You need to give arguments : 
+usage : ./hello.sh file_name
+file not found
+rkiran@rkiran-lws:~/Desktop$ 
+rkiran@rkiran-lws:~/Desktop$ ./hello.sh file1.txt 
+file found
+rkiran@rkiran-lws:~/Desktop$ 
+
+'
+
+
+#readonly can be used for reading only, cannot reassign or override
+var=31
+readonly var 
+var=50
+echo "var = $var"
+
+: '
+rkiran@rkiran-lws:~/Desktop$ ./hello.sh
+./hello.sh: line 5: var: readonly variable
+var = 31
+rkiran@rkiran-lws:~/Desktop$ 
+
+'
+
+hello() {
+echo "hello world"
+}
+
+readonly -f hello
+
+hello() {
+echo "hello world Again"
+}
+
+readonly -f
+#readonly -p -> give same output(shows all readonly function)
+#-f to see all the realonly functions, 
+#-p variables,-f for functions
+
+-----------------------------------------------------------------------------
+#! /bin/bash
+
+#Signals and traps
+#traps are like locks in threading
+file=/home/rkiran/Desktop/file.txt
+
+trap "rm -f $file && echo file deleted; exit" 0 2 15
+#trap "echo Exit signal is detected" SIGINT
+
+echo "pid is $$"
+while (( COUNT < 10 ))
+do
+ sleep 10
+ (( COUNT ++ ))
+ echo $COUNT
+done
+exit 0
+
+: '
+#cntl + c = sig int command -> interrupt signal
+#cntl + z = suspend signal
+#kill -p -> sig kill command
+
+#trap - will trap signals
+
+#man 7 signal
+
+ SIGHUP        1       Term    Hangup detected on controlling terminal
+                                     or death of controlling process
+       SIGINT        2       Term    Interrupt from keyboard
+       SIGQUIT       3       Core    Quit from keyboard
+       SIGILL        4       Core    Illegal Instruction
+       SIGABRT       6       Core    Abort signal from abort(3)
+       SIGFPE        8       Core    Floating point exception
+       SIGKILL       9       Term    Kill signal
+       SIGSEGV      11       Core    Invalid memory reference
+       SIGPIPE      13       Term    Broken pipe: write to pipe with no
+                                     readers
+       SIGALRM      14       Term    Timer signal from alarm(2)
+       SIGTERM      15       Term    Termination signal
+       SIGUSR1   30,10,16    Term    User-defined signal 1
+       SIGUSR2   31,12,17    Term    User-defined signal 2
+
+Note: SIGKILL and SIGSTOP -> trap will not able to catch them.
+
+
+trap "echo Exit commands is detected" 0
+
+echo "Hello world"
+
+exit 0
+
+
+'
+
+
+
+
+
+
+
+
