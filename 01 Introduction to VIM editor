@@ -1,0 +1,65 @@
+VI Editor:
+----------
+Unix text editing program.
+
+vi filename
+
+vi +90 filename
+
+:q to quit
+
+cat -n filename.txt -> this shows number of lines(all)
+
+cat -b filename.txt -> this shows line ignoring empty lines.
+
+cat -s -n fileNameHere -> s is for squeeze all empty lines.
+
+sed -n 2p text1.txt -> only prints 2nd line in the text.
+
+h -> left
+l -> right
+j -> down
+k -> up
+
+dd = delete(press "3" and then d -> 3 line delete)
+yy = copy(yank is same as 3 and y)
+p = paste
+:r = reading text
+:n= next file
+:N = back  to main file
+:o = for new file
+shift+o = new line and shifts
+
+r -> replace only word at a time(only replace)
+R -> replace multiple time untill ESC
+
+
+
+for search:
+ESC -> /COPIED_WORD_FOR_SEARCH -> n or N(back or next).
+
+?COPIED_WORD_FOR_SEARCH -> for reverse search.
+
+:w = for saving
+:wq = for saving and exiting
+:w! = saving forcefully
+:history
+
+$ -> for end of the line(only particular line)
+
+^ -> for start of particular line
+
+:3 or :n -> 3 or any number to go to particular line
+
+. -> keep repeating the previous command
+
+G -> goes to last line(firt char)
+
+%s/search_word/replace_thisword/g -> this will replace all searched word
+
+
+navigatate and multiple window
+---------------------------------
+:sp (split)
+:e otherfile.txt (2 windows mode) "cntr + w twice"
+:vsp
