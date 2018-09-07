@@ -1,0 +1,32 @@
+SED:
+cat >sedtest
+cat sedtest 
+ sed '1,3d' sedtest 
+  501  cat sedtest 
+  502  sed 's/this is /  /' sedtest 
+  503  cat sedtest 
+  504  sed '1,2!d' sedtest 
+  505  cat sedtest 
+sed 's/this/1/' sedtest 
+
+awk :
+1.initialization
+2.Body 
+3.ending
+NR= Record number(iterator)(row)
+NF= No of fields.(column)
+
+$0 -> complete table(record)
+$1 -> col 1
+$2 -> col 2(field 2)
+
+
+awk 'BEGIN{sum=0} {sum=sum-$1}END {print sum}' employee.txt
+
+awk '{ print $1,$0}' employee.txt
+
+awk '{ print NF}' employee.txt 
+
+awk '{ print NR}' employee.txt 
+
+awk 'BEGIN {for(i=1;i<10;i++) print i }'
